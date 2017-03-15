@@ -39,7 +39,7 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
             provide: INITIAL_CONFIG,
             useValue: {
               document: getDocument(filePath),
-              url: options.req.url
+              url: options.req.originalUrl
             }
           }
         ]);
