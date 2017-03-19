@@ -16,7 +16,10 @@ import { TransferHttpModule } from '../modules/transfer-http/transfer-http.modul
     RouterModule.forRoot([
       { path: '', component: HomeView, pathMatch: 'full'},
       { path: 'lazy', loadChildren: './+lazy/lazy.module#LazyModule'}
-    ])
+    ],
+    {
+      initialNavigation: 'enabled'
+    })
 	],
 	declarations: [ AppComponent, HomeView ],
   exports: [ AppComponent ]
