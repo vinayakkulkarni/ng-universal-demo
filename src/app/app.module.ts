@@ -18,9 +18,6 @@ import { TransferHttpModule } from '../modules/transfer-http/transfer-http.modul
       { path: 'lazy', loadChildren: './+lazy/lazy.module#LazyModule'}
     ])
 	],
-  providers: [
-    { provide: APP_BASE_HREF, useValue: '/'}
-  ],
 	declarations: [ AppComponent, HomeView ],
   exports: [ AppComponent ]
 })
