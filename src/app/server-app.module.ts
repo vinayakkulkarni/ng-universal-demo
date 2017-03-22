@@ -6,13 +6,12 @@ import { AppModule } from './app.module';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 import { BrowserModule } from '@angular/platform-browser';
 
-function boot(state: TransferState, applicationRef: ApplicationRef) {
+export function boot(state: TransferState, applicationRef: ApplicationRef) {
   return function () {
     applicationRef.isStable
       .filter((stable: boolean) => stable)
       .first()
       .subscribe(() => {
-        console.log('boot');
         state.inject();
       });
   }
@@ -40,12 +39,4 @@ function boot(state: TransferState, applicationRef: ApplicationRef) {
     }
   ]
 })
-export class ServerAppModule {
-
-  constructor(private transferState: TransferState) { }
-
-  // Gotcha
-  // ngDoBootstrap() {
-  //   this.transferState.inject();
-  // }
-}
+export class ServerAppModule {}
