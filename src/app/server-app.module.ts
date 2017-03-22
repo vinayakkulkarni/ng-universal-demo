@@ -1,10 +1,22 @@
-import { NgModule } from '@angular/core';
-import { ServerModule } from '@angular/platform-server';
+import { NgModule, APP_BOOTSTRAP_LISTENER, PlatformRef, ApplicationRef } from '@angular/core';
+import { ServerModule, PlatformState } from '@angular/platform-server';
 import { ServerTransferStateModule } from '../modules/transfer-state/server-transfer-state.module';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 import { BrowserModule } from '@angular/platform-browser';
+
+function boot(state: TransferState, applicationRef: ApplicationRef) {
+  return function () {
+    applicationRef.isStable
+      .filter((stable: boolean) => stable)
+      .first()
+      .subscribe(() => {
+        console.log('boot');
+        state.inject();
+      });
+  }
+}
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -15,6 +27,17 @@ import { BrowserModule } from '@angular/platform-browser';
     ServerModule,
     ServerTransferStateModule,
     AppModule
+  ],
+  providers: [
+    {
+      provide: APP_BOOTSTRAP_LISTENER,
+      multi: true,
+      useFactory: boot,
+      deps: [
+        TransferState,
+        ApplicationRef
+      ]
+    }
   ]
 })
 export class ServerAppModule {
@@ -22,7 +45,7 @@ export class ServerAppModule {
   constructor(private transferState: TransferState) { }
 
   // Gotcha
-  ngOnBootstrap = () => {
-    this.transferState.inject();
-  }
+  // ngDoBootstrap() {
+  //   this.transferState.inject();
+  // }
 }
