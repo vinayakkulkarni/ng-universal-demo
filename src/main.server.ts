@@ -4,7 +4,7 @@ import 'rxjs/Rx';
 import * as express from 'express';
 import { platformServer, renderModuleFactory } from '@angular/platform-server';
 import { ServerAppModule } from './app/server-app.module';
-import { ngExpressEngine } from './modules/ng-express-engine/express-engine';
+import { ngExpressEngine } from './modules/ng-express-engine';
 import { ROUTES } from './routes';
 import { App } from './api/app';
 import { enableProdMode } from '@angular/core';
@@ -13,7 +13,6 @@ const app = express();
 const api = new App();
 const port = 8000;
 const baseUrl = `http://localhost:${port}`;
-
 app.engine('html', ngExpressEngine({
   bootstrap: ServerAppModule
 }));
@@ -26,7 +25,7 @@ app.use('/', express.static('dist', {index: false}));
 ROUTES.forEach(route => {
   app.get(route, (req, res) => {
     console.time(`GET: ${req.originalUrl}`);
-    res.render('../dist/index', {
+    res.render('index', {
       req: req,
       res: res
     });

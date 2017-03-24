@@ -3,6 +3,11 @@
   "angularCompilerOptions": {
     "entryModule": "./app/server-app.module#ServerAppModule"
   },
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
   "exclude": [
     "./main.server.aot.ts"
   ]

@@ -3,8 +3,9 @@ import { TransferHttp } from '../../modules/transfer-http/transfer-http';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
+  moduleId: __filename,
 	selector: 'home-view',
-	template: `<h3>{{subs | async}}</h3>`
+	templateUrl: './home.html'
 })
 export class HomeView implements OnInit {
   public subs: Observable<string>;
