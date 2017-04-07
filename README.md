@@ -3,6 +3,8 @@
 ## Get Started
 ```sh
 npm install
+npm run postinstall
+gulp semantic-build
 npm run start
 ```
 ## Developement mode
