@@ -13,7 +13,8 @@
     "prebuild:prod": "npm run clean",
     "clean": "rimraf dist",
     "server": "nodemon dist/server.js",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "postinstall": "mv node_modules/semantic-ui/src/theme.config.example node_modules/semantic-ui/src/theme.config"
   },
   "engines": {
     "node": ">=6.0.0"
