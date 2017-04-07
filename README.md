@@ -2,6 +2,7 @@
 
 ## Get Started
 ```sh
+npm install
 npm run start
 ```
 ## Developement mode
