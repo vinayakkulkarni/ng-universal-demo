@@ -9,7 +9,7 @@ import { TransferHttpModule } from '../modules/transfer-http/transfer-http.modul
 
 
 @NgModule({
-	imports: [
+  imports: [
     CommonModule,
     HttpModule,
     TransferHttpModule,
@@ -17,8 +17,8 @@ import { TransferHttpModule } from '../modules/transfer-http/transfer-http.modul
       { path: '', component: HomeView, pathMatch: 'full'},
       { path: 'lazy', loadChildren: './+lazy/lazy.module#LazyModule'}
     ])
-	],
-	declarations: [ AppComponent, HomeView ],
+  ],
+  declarations: [ AppComponent, HomeView ],
   exports: [ AppComponent ]
 })
 export class AppModule {}

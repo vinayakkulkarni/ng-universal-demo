@@ -3,7 +3,8 @@
   "angularCompilerOptions": {
     "entryModule": "./app/browser-app.module#BrowserAppModule"
   },
-  "exclude": [
-    "./main.server.aot.ts"
+  "include": [
+    "./main.browser.ts",
+    "./app/+lazy/lazy.module.ts"
   ]
 }
