@@ -3,7 +3,8 @@
   "angularCompilerOptions": {
     "entryModule": "./app/server-app.module#ServerAppModule"
   },
-  "exclude": [
-    "./main.server.aot.ts"
+  "include": [
+    "main.server.ts",
+    "./app/+lazy/lazy.module.ts"
   ]
 }
